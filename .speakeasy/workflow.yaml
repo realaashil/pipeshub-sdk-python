@@ -1,21 +1,20 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    PipesHub API:
+    Pipeshub API:
         inputs:
-            - location: /Users/anshika/work/PipesHub/pipeshub-sdk-python/pipeshub-openapi.yaml
-        overlays:
-            - location: .speakeasy/speakeasy-modifications-overlay.yaml
-        output: .speakeasy/out.openapi.yaml
-        registry:
-            location: registry.speakeasyapi.dev/pipeshub/test/pipes-hub-api
+            - location: registry.speakeasyapi.dev/pipeshub/test/pipes-hub-api
+        output: .speakeasy/pipeshub-open-api.yaml
 targets:
     pipeshub:
         target: python
-        source: PipesHub API
+        source: Pipeshub API
+        publish:
+            pypi:
+                token: $pypi_token
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/pipeshub/test/pipes-hub-api-python-code-samples
+                location: registry.speakeasyapi.dev/pipeshub/test/pipeshub-oas-python-code-samples
             labelOverride:
                 fixedValue: Python (SDK)
             blocking: false
